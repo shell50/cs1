@@ -1,0 +1,11 @@
+module dayBool
+
+import bool
+import days
+import pair
+
+data pair = mkPair days bool
+
+d1: pair
+d1 = mkPair Monday false
+

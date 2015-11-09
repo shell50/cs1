@@ -1,0 +1,62 @@
+-- total functions
+-- block comments
+-- symbolic arguments
+-- pattern matching: any argument
+
+module bool
+import pair
+
+data bool = true | false
+
+id_bool: bool -> bool
+id_bool b = b
+
+constFalse: bool -> bool
+constFalse _ = false
+
+constTrue: bool -> bool
+constTrue _ = true
+
+not: bool -> bool
+not true = false
+not _ = true
+
+and: pair bool bool -> bool
+and (mkPair true true) = true
+and (mkPair a b) = false
+
+or: pair bool bool -> bool
+or (mkPair false false) = false
+or (mkPair a b) = true
+
+nand: pair bool bool -> bool
+nand a = (not (and a))
+
+xor: pair bool bool -> bool
+xor (mkPair true false) = true
+xor (mkPair false true) = true
+xor (mkPair a b) = false
+
+-- Exam Problem #2: There are 16 possible ways to fill in the result
+  -- column for a truth table for a binary boolean function, and there
+  -- are thus exactly 16 such functions, and no more.
+
+pand: bool -> bool -> bool
+pand true = id_bool
+pand false = constFalse
+
+por: bool -> bool -> bool
+por true = constTrue
+por false = id_bool
+
+pxor: bool -> bool -> bool
+pxor true = not
+pxor false = id_bool
+
+pnand: bool -> bool -> bool
+pnand true = not
+pnand false = constTrue
+
+-- binary functions (bool -> bool -> bool), implicit
+
+
